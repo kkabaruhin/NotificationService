@@ -1,10 +1,12 @@
-package com.example.NotificationService;
+package com.example.NotificationService.kafka;
 
 
 
+import com.example.NotificationService.model.UserDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -21,6 +23,7 @@ import java.util.Map;
 public class KafkaConsumerConfig {
 
     @Bean
+    @LoadBalanced
     public ConsumerFactory<String, UserDto> consumerFactory(ObjectMapper objectMapper) {
         Map<String, Object> properties = new HashMap<>();
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -31,6 +34,7 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
+    @LoadBalanced
     public ConcurrentKafkaListenerContainerFactory<String, UserDto> kafkaListenerContainerFactory(
             ConsumerFactory<String, UserDto> consumerFactory
     ) {

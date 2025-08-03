@@ -1,7 +1,7 @@
 package com.example.NotificationService.mail;
 
-import com.example.NotificationService.mail.MailProperties;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +15,7 @@ public class MailConfig {
     private final MailProperties mailProperties;
 
     @Bean
+    @LoadBalanced
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost(mailProperties.getHost());

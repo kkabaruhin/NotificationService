@@ -1,6 +1,6 @@
 package com.example.NotificationService.mail;
 
-import com.example.NotificationService.UserDto;
+import com.example.NotificationService.model.UserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;

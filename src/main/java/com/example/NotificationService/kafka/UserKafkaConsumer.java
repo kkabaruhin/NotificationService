@@ -1,5 +1,6 @@
-package com.example.NotificationService;
+package com.example.NotificationService.kafka;
 
+import com.example.NotificationService.model.UserDto;
 import com.example.NotificationService.mail.MailSenderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
